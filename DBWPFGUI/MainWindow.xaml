@@ -6,25 +6,39 @@
         xmlns:local="clr-namespace:DBWPFGUI"
         mc:Ignorable="d"
         Title="Владыка Архива" Height="450" Width="800">
-
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MyStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Background="#FF404044" Height="450" Margin="0, 0, 0, 0">
-        <DataGrid HorizontalAlignment="Center" Height="354" Margin="0,56,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Menu  Margin="0,0,0,428" Background="#FF242425" Padding="3" Foreground="White" Height="25">
-            <MenuItem Header="Файл" FontFamily="Corbel" Foreground="White" Background="#FF242425" BorderBrush="#FF242425">
-                <MenuItem Header="Открыть"  FontFamily="Corbel" Foreground="White" Background="Black" BorderBrush="#FF242425"/>
-                <MenuItem Header="Сохранить"  FontFamily="Corbel" Foreground="White" Background="#FF242425"/>
+        <DataGrid HorizontalAlignment="Right" Height="418" Margin="0,22,0,0" VerticalAlignment="Top" Width="707" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Menu  Margin="0,0,0,428" Padding="3" Height="25" Style="{DynamicResource BAW}" Focusable="False">
+            <MenuItem Style="{DynamicResource MISBaW}" Header="Файл" Width="60">
+
+                <MenuItem Header="Открыть"  Style="{DynamicResource BAW}" Focusable="False" Click="MenuItem_Click" />
+                <MenuItem Header="Сохранить"  Style="{DynamicResource BAW}" Focusable="False"/>
             </MenuItem>
-            <MenuItem Header="Справка"  FontFamily="Corbel" Foreground="White" Background="#FF242425">
-                <MenuItem Header="О программе" FontFamily="Corbel" Foreground="White" Background="#FF242425"/>
-                <MenuItem Header="О разработчике" FontFamily="Corbel" Foreground="White" Background="#FF242425"/>
+
+            <MenuItem Header="Справка"  Style="{DynamicResource MISBaW}" Width="60">
+                <MenuItem Header="О программе"  Style="{DynamicResource BAW}" />
+                <MenuItem Header="О разработчике"  Style="{DynamicResource BAW}"  />
             </MenuItem>
-            <MenuItem Header="Выход"  FontFamily="Corbel" Foreground="White"/>
+
+            <MenuItem Style="{DynamicResource MISBaW}" Header="Настройки"   Width="60">
+                <MenuItem Header="Автосохранение"  Style="{DynamicResource BAW}" IsCheckable="True"/>
+                <MenuItem Header="Цветовыделение"  Style="{DynamicResource BAW}" IsCheckable="True" />
+            </MenuItem>
         </Menu>
-        <ToolBar Background="#FF242425" Margin="-12,21,-15,0" Height="30" VerticalAlignment="Top">
-            <Button x:Name="addButton"  FontFamily="Corbel" Foreground="White" Content="Добавить" Width="60" Height="30" Margin="3, 0, 0,0" />
-            <Button x:Name="removeButton"  FontFamily="Corbel" Foreground="White" Content="Удалить" Width="60" Height="30"/>
-            <Button x:Name="clearButton"  FontFamily="Corbel" Foreground="White" Content="Очистить" Width="60" Height="30"/>
-            <Separator/>
-        </ToolBar>
+        <ToolBarTray Orientation="Vertical" Margin="0,22,707,0" Style="{DynamicResource BAW}">
+            <ToolBar Height="119" VerticalAlignment="Top" Style="{DynamicResource BAW}" Background="Transparent" BorderBrush="Black">
+                <Button x:Name="addButton" Content="Добавить" ToolTip="Добавляет строку в книгу обид. Shift + Enter" Width="60" Height="30" Margin="3, 0, 0,0"  Style="{DynamicResource BAW}"/>
+                <Button x:Name="removeButton" Content="Удалить" Width="60" Height="30"  Style="{DynamicResource BAW}"/>
+                <Button x:Name="clearButton" Content="Очистить" Width="60" Height="30"  Style="{DynamicResource BAW}"/>
+                <Separator/>
+            </ToolBar>
+        </ToolBarTray>
     </Grid>
 </Window>
